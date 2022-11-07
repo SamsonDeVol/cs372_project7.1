@@ -328,14 +328,14 @@ def dijkstras_shortest_path(routers, src_ip, dest_ip):
         current_node = min(to_visit, key=distance.get)
         to_visit.remove(current_node)
 
-        # check neighbor routers in 
+        # check neighbor routers in router directory
         for next_node in routers[current_node]['connections']:
             if next_node in to_visit:
 
-                # get total distance from current node and 
+                # get total distance from current node and between current and next node
                 total_distance = distance[current_node] + get_next_node_distance(routers, current_node, next_node)
                 
-                # check if this is the way
+                # check if this is the way with shortest distance
                 if total_distance < distance[next_node]:
                     distance[next_node] = total_distance
                     parent[next_node] = current_node
